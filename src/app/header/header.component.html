@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a routerLink="/" class="navbar-brand">Recipe Book</a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li routerLinkActive="activeNave"  *ngIf="isAuthanticated"><a routerLink="/recipes">Recipes</a></li>
+                <li routerLinkActive="activeNave"  *ngIf="!isAuthanticated"><a routerLink="/auth">Authnticate</a></li>
+                <li routerLinkActive="activeNave"><a routerLink="/shopping-list">Shopping List</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li  *ngIf="isAuthanticated" (click)="onLogout()">
+                    <a>Lougout</a>
+                </li>
+                <li class="dropdown" appDropdown *ngIf="isAuthanticated">
+                    <a class="dropdown-toggle" role="button"> Manage <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a (click)="onSaveData()">Save Data</a></li>
+                        <li><a (click)="onFetchData()">Fetch Data</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
